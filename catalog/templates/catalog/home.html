@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">WELCOME TO THE LIBRARY</p>
+    <h1>Every Book. <span class="gold">One Shelf.</span></h1>
+    <p class="lead">
+        Browse, add and manage your favourite books, keep private notes,
+        and explore the collection through a REST API.
+    </p>
+    <a class="btn" href="{% url 'book_list' %}">Browse Books</a>
+    <a class="btn btn-ghost" href="{% url 'book_create' %}">Add a Book</a>
+</section>
+
+<section class="stats">
+    <div class="stat"><strong>{{ total_books }}</strong><span>Books</span></div>
+    <div class="stat"><strong>{{ total_genres }}</strong><span>Genres</span></div>
+    <div class="stat"><strong>{{ total_members }}</strong><span>Members</span></div>
+    <div class="stat"><strong>4</strong><span>Modules</span></div>
+</section>
+
+<h2 class="section-title">Latest <span class="gold">Additions</span></h2>
+<div class="grid">
+    {% for book in latest_books %}
+    <a class="book-card" href="{% url 'book_list' %}">
+        <div class="cover {% cycle 'g1' 'g2' 'g3' 'g4' 'g5' %}">{{ book.title|first|upper }}</div>
+        <div class="card-body">
+            <h3>{{ book.title }}</h3>
+            <p>{{ book.author }}</p>
+            <span class="tag">{{ book.genre }}</span>
+        </div>
+    </a>
+    {% empty %}
+    <div class="empty" style="grid-column: 1 / -1;">
+        No books yet. <a href="{% url 'book_create' %}">Add the first one!</a>
+    </div>
+    {% endfor %}
+</div>
+
+<h2 class="section-title">Explore the <span class="gold">Library</span></h2>
+<div class="grid">
+    <a class="feature" href="{% url 'book_list' %}">
+        <div class="icon">📖</div>
+        <h3>Book Collection</h3>
+        <p>View, search, edit and delete books stored with the Django ORM.</p>
+    </a>
+    <a class="feature" href="{% url 'note_list' %}">
+        <div class="icon">📝</div>
+        <h3>My Notes</h3>
+        <p>Private notes that only you can see, saved per logged-in user.</p>
+    </a>
+    <a class="feature" href="/api/books/">
+        <div class="icon">⚙️</div>
+        <h3>REST API</h3>
+        <p>Read the whole collection as JSON through Django REST Framework.</p>
+    </a>
+    <a class="feature" href="/admin/">
+        <div class="icon">🛡️</div>
+        <h3>Admin Panel</h3>
+        <p>Manage all the data through the built-in Django Admin site.</p>
+    </a>
+</div>
+{% endblock %}

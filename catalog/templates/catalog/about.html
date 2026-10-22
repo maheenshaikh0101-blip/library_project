@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}About{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <p class="eyebrow">ABOUT THE PROJECT</p>
+    <h1>The <span class="gold">Book Library</span></h1>
+    <p class="lead">
+        A Django web application built step by step for the Web Development
+        using Python practicals.
+    </p>
+</section>
+
+<div class="form-card" style="max-width: 720px;">
+    <h2>What it includes</h2>
+    <ul class="about-list">
+        <li><strong>Catalog:</strong> CRUD operations on books using the Django ORM and SQLite.</li>
+        <li><strong>Admin:</strong> data management through the Django Admin panel.</li>
+        <li><strong>Accounts:</strong> signup, login and logout with <code>@login_required</code> and CSRF protection.</li>
+        <li><strong>Notes:</strong> user-specific notes with ModelForms and session data.</li>
+        <li><strong>API:</strong> a REST API built with Django REST Framework.</li>
+        <li><strong>Deployment:</strong> hosted online on Render.</li>
+    </ul>
+
+    <h2 style="margin-top: 26px;">Built by</h2>
+    <p class="muted">Maheen Shaikh &middot; Enrollment No. 246040307130</p>
+</div>
+{% endblock %}

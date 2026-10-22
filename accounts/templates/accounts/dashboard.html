@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+<section class="hero" style="padding-bottom: 10px;">
+    <p class="eyebrow">DASHBOARD</p>
+    <h1>Welcome, <span class="gold">{{ user.username }}!</span></h1>
+    <p class="lead">You are logged in. This page is protected by the @login_required decorator.</p>
+</section>
+
+<div class="grid">
+    <a class="feature" href="{% url 'book_list' %}">
+        <div class="icon">📖</div>
+        <h3>Book List</h3>
+        <p>See the full book collection.</p>
+    </a>
+    <a class="feature" href="{% url 'note_list' %}">
+        <div class="icon">📝</div>
+        <h3>My Notes</h3>
+        <p>Open your private notes.</p>
+    </a>
+    <a class="feature" href="/api/books/">
+        <div class="icon">⚙️</div>
+        <h3>REST API</h3>
+        <p>View the books as JSON.</p>
+    </a>
+</div>
+{% endblock %}

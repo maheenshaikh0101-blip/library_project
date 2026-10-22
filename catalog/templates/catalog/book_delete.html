@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}Delete Book{% endblock %}
+
+{% block content %}
+<div class="form-card">
+    <h1>Delete <span class="gold">Book</span></h1>
+    <p class="muted" style="text-align: center;">
+        Are you sure you want to delete "<strong>{{ book.title }}</strong>"?
+    </p>
+    <form method="POST">
+        {% csrf_token %}
+        <div class="actions" style="justify-content: center;">
+            <button type="submit" class="btn-danger">Yes, Delete</button>
+            <a class="btn btn-ghost" href="{% url 'book_list' %}">Cancel</a>
+        </div>
+    </form>
+</div>
+{% endblock %}

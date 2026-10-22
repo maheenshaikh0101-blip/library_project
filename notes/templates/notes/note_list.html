@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block title %}My Notes{% endblock %}
+
+{% block content %}
+<div class="page-head">
+    <h1>My <span class="gold">Notes</span></h1>
+    <a class="btn" href="{% url 'note_create' %}">+ Add Note</a>
+</div>
+<p class="muted">
+    Logged in as <strong>{{ user.username }}</strong> &middot;
+    Page visits this session: <strong>{{ visits }}</strong>
+</p>
+
+<div class="grid">
+    {% for note in notes %}
+    <div class="note-card">
+        <h3>{{ note.title }}</h3>
+        <p>{{ note.content }}</p>
+        <small>{{ note.created_at|date:"d M Y, H:i" }}</small>
+        <div class="card-actions">
+            <a class="btn btn-ghost btn-small" href="{% url 'note_update' note.id %}">Edit</a>
+            <a class="btn btn-danger btn-small" href="{% url 'note_delete' note.id %}">Delete</a>
+        </div>
+    </div>
+    {% empty %}
+    <div class="empty" style="grid-column: 1 / -1;">
+        No notes yet. Add your first note!
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
